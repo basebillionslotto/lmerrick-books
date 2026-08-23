@@ -1,52 +1,49 @@
-# L. Merrick / Groundwood catalog site
+# L. Merrick Books — GitHub Pages storefront
 
-Static promo site for the finished digital catalog. No build step. No tracker. No stock photos or testimonials.
+Static sales catalog for the finished digital list (author: **L. Merrick**). No build step, no tracker, no stock-photo theft, no testimonials, no fake reviews.
+
+## Live URL
+
+Canonical host is the project Pages site:
+
+`https://basebillionslotto.github.io/lmerrick-books/`
+
+Every page, stylesheet, and cover uses the `/lmerrick-books/` prefix so assets resolve on a project site (not `username.github.io` root). Do not point a custom domain at this repo until you own the name and are ready to add a `CNAME` plus DNS. Custom domain is **optional later**.
+
+There is no `CNAME` file in this folder.
+
+## Deploy to GitHub Pages
+
+1. Put the **contents** of this folder (`index.html`, `books/`, `covers/`, `styles.css`, `.nojekyll`, etc.) at the root of the `basebillionslotto/lmerrick-books` repository — not nested under `site/`.
+2. Repo **Settings → Pages**: Source = Deploy from a branch, Branch = `main`, folder = `/ (root)`.
+3. Wait for the Pages build. Open `https://basebillionslotto.github.io/lmerrick-books/`.
+4. `.nojekyll` is present so GitHub does not process the files through Jekyll.
+
+If the repo already exists, copy/overwrite these files, commit, and push `main`.
+
+## Optional custom domain (later)
+
+Only after you own a domain:
+
+1. Add a `CNAME` file with the hostname (one line).
+2. In Pages settings, set Custom domain and complete GitHub’s DNS instructions.
+3. Rewrite canonical / Open Graph / `sitemap.xml` / `robots.txt` hosts from `https://basebillionslotto.github.io/lmerrick-books` to `https://your-domain` (and drop the `/lmerrick-books/` prefix on asset links if the site then lives at domain root).
+
+Until then, leave the GitHub Pages URLs as-is.
+
+## Sales rules
+
+- Primary CTA on each card is **Details** (book page). Amazon is labeled **Coming soon on Amazon** and uses `href="#amazon-<slug>"` until a real ASIN exists in that book folder.
+- No invented ASINs. No ISBN in JSON-LD unless a file records an assigned one.
+- JSON-LD is `Book` / `ItemList` only — no reviews, ratings, or fake stars.
+
+When an ASIN lands: replace `#amazon-<slug>` with `https://www.amazon.com/dp/ASIN` on the catalog card and the book page, change the button text to **Buy on Amazon**, and record the ASIN in that title’s `kdp-metadata.md`.
 
 ## Files
 
-- `index.html` — catalog
-- `about.html` — author / method
-- `contact.html` — mailto placeholder (`author@example.com`)
+- `index.html` — catalog (56 cards)
+- `books/<slug>.html` — one page per manuscript
+- `about.html`, `contact.html`, `privacy.html`, `404.html`
 - `styles.css`
-- `covers/` — copies of finished covers from `/workspace/books/_covers/final/`
-
-Titles without a final cover (Iran–Israel–US timeline, Kanye West, Fifty Years of U.S. Immigration Policy) use a typographic placeholder block, not a downloaded image.
-
-Amazon buttons point at `#amazon-TITLE` until ASINs exist. Kobo, Apple Books, and Google Play are labeled Coming soon.
-
-List prices on the site: **$3.99** for *Trump: The Public Record, 2015–2026* and *Fifty Years of U.S. Immigration Policy*; **$2.99** for the other eight titles.
-
-## Host on GitHub Pages (free)
-
-1. Create a GitHub repository (for example `groundwood-catalog` or `username.github.io`).
-2. Put the contents of this `site/` folder at the **root** of the default branch (`index.html` must be at `/`, not nested).
-   ```bash
-   cd site
-   git init
-   git add .
-   git commit -m "Add Groundwood catalog site"
-   git branch -M main
-   git remote add origin https://github.com/USER/REPO.git
-   git push -u origin main
-   ```
-3. On GitHub: **Settings → Pages → Build and deployment**.
-   - Source: **Deploy from a branch**
-   - Branch: `main` / `/ (root)`
-4. After a minute, the site is at `https://USER.github.io/REPO/` (or `https://USER.github.io/` if the repo is named `USER.github.io`).
-5. Custom domain (optional): add a `CNAME` file containing your domain, then set DNS as GitHub instructs.
-
-Project-site URLs need relative links (already used: `styles.css`, `covers/…`, `about.html`). Do not use a leading `/` if the site is not at the domain root.
-
-## Host on Netlify (free)
-
-1. Drag this `site/` folder onto [https://app.netlify.com/drop](https://app.netlify.com/drop), **or**
-2. Connect the GitHub repo in Netlify:
-   - Build command: *(leave empty)*
-   - Publish directory: `.` if the repo is only this folder, or `site` if this folder lives inside a larger repo.
-3. Netlify assigns `https://something.netlify.app`. Custom domains are free on the starter plan.
-
-No environment variables or serverless functions are required.
-
-## After ASINs land
-
-Replace each `href="#amazon-…"` on `index.html` with the live Amazon product URL. Then add Kobo / Apple / Google URLs and change those spans from “Coming soon” to real links.
+- `covers/<slug>.jpg`
+- `sitemap.xml`, `robots.txt`, `.nojekyll`
