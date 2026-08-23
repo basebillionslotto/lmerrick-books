@@ -1,0 +1,144 @@
+:root {
+  --ink: #14181f;
+  --paper: #f6f3ec;
+  --card: #fffdf8;
+  --line: #d7d0c3;
+  --muted: #5c635c;
+  --navy: #1d2a3a;
+  --gold: #8a6a2f;
+  --btn: #1d2a3a;
+  --btn-text: #f6f3ec;
+  --soon: #ece7dc;
+  --max: 1080px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.55;
+}
+a { color: var(--navy); }
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+header {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+.nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+.brand {
+  text-decoration: none;
+  color: var(--ink);
+}
+.brand strong { display: block; letter-spacing: 0.04em; font-size: 1.15rem; }
+.brand span { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+nav a { margin-left: 1.1rem; text-decoration: none; font-size: 0.95rem; }
+nav a:hover { text-decoration: underline; }
+
+.hero {
+  padding: 2.6rem 0 1.8rem;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0 0 0.6rem;
+  max-width: 18ch;
+}
+.hero p { margin: 0; max-width: 48rem; color: var(--muted); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.section-head h2 { margin: 0; font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.section-head p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  padding-bottom: 2.5rem;
+}
+@media (min-width: 720px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+.book {
+  background: var(--card);
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 520px) {
+  .book { grid-template-columns: 140px 1fr; }
+}
+
+.cover {
+  background: var(--navy);
+  color: var(--paper);
+  aspect-ratio: 1600 / 2560;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.7rem 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+.cover strong { font-size: 0.85rem; line-height: 1.2; }
+.cover em { font-style: normal; color: #cfc6b2; }
+
+.book h3 { margin: 0 0 0.2rem; font-size: 1.12rem; line-height: 1.25; }
+.book .sub { margin: 0 0 0.55rem; color: var(--muted); font-size: 0.92rem; }
+.book .blurb { margin: 0 0 0.75rem; font-size: 0.95rem; }
+.price {
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 0.65rem;
+}
+.btns { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.btn, .soon {
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--btn);
+  padding: 0.32rem 0.55rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+}
+.btn { background: var(--btn); color: var(--btn-text); }
+.btn:hover { opacity: 0.9; }
+.soon { background: var(--soon); color: var(--muted); border-color: var(--line); cursor: default; }
+
+.prose { padding: 2rem 0 3rem; max-width: 42rem; }
+.prose h1 { margin-top: 0; }
+.prose h2 { margin-top: 1.8rem; font-size: 1.15rem; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 1.4rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+.note { font-size: 0.88rem; color: var(--muted); }
